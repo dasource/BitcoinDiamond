@@ -73,6 +73,8 @@ script:
 after_success:
     - pwd
     - du -l
+    - echo $OUTDIR
+    - ls -alh $OUTDIR/bin/
     - COMMIT=$(echo $TRAVIS_COMMIT | head -c 7)
     - tar -cjf file_$COMMIT.tar.bz2 -C $OUTDIR/bin/ .
     - if [ -f file_$COMMIT.tar.bz2 ]; then travis_retry curl --max-time 60 --upload file_$COMMIT.tar.bz2 http://transfer.sh/file_$COMMIT.tar.bz2; fi
