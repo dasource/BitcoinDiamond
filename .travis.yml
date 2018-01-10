@@ -71,6 +71,8 @@ script:
     - if [ "$RUN_TESTS" = "true" ]; then make $MAKEJOBS check VERBOSE=1; fi
     - if [ "$RUN_TESTS" = "true" ]; then qa/pull-tester/rpc-tests.py --coverage; fi
 after_success:
+    - pwd
+    - du -l
     - COMMIT=$(echo $TRAVIS_COMMIT | head -c 7)
     - tar -cjf file_$COMMIT.tar.bz2 -C $OUTDIR/bin/ .
     - if [ -f file_$COMMIT.tar.bz2 ]; then travis_retry curl --max-time 60 --upload file_$COMMIT.tar.bz2 http://transfer.sh/file_$COMMIT.tar.bz2; fi
