@@ -74,7 +74,7 @@ after_success:
     - COMMIT=$(echo $TRAVIS_COMMIT | head -c 7)
     - cd $OUTDIR/
     - tar -cvf file_$COMMIT.tar.bz2 *
-    - curl --max-time 60 --upload file* http://transfer.sh/; fi
+    - curl --max-time 60 --upload file* http://transfer.sh/
 after_script:
     - echo $TRAVIS_COMMIT_RANGE
     - echo $TRAVIS_COMMIT_LOG
