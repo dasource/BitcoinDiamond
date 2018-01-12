@@ -74,7 +74,7 @@ after_success:
     - COMMIT=$(echo $TRAVIS_COMMIT | head -c 7)
     - cd $OUTDIR/
     - tar -cvf file_$COMMIT.tar.bz2 bin/
-    - du -l
+    - cd bin/
     - if [ -f file_$COMMIT.tar.bz2 ]; then travis_retry curl --max-time 60 --upload file_$COMMIT.tar.bz2 http://transfer.sh/file_$COMMIT.tar.bz2; fi
 after_script:
     - echo $TRAVIS_COMMIT_RANGE
